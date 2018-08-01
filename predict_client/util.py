@@ -71,7 +71,9 @@ def predict_response_to_dict(predict_response):
 
 
 def make_tensor_proto(data, dtype):
+
     tensor_proto = TensorProto()
+    print(dir(tensor_proto))
 
     if type(dtype) is str:
         dtype = dtype_to_number[dtype]
@@ -79,6 +81,7 @@ def make_tensor_proto(data, dtype):
     dim = [{'size': 1}]
     values = [data]
 
+    # TODO assert data is np.array in addition to hasattr shape
     if hasattr(data, 'shape'):
         dim = [{'size': dim} for dim in data.shape]
         values = list(data.reshape(-1))
