@@ -10,7 +10,7 @@ def parse_list(values, message):
     '''parse list to protobuf message'''
     if isinstance(values[0], dict):  # value needs to be further parsed
         for v in values:
-            cmd = message.add()
+            cmd = message.predictions()
             parse_dict(v, cmd)
     else:  # value can be set
         message.extend(values)
